@@ -3,7 +3,7 @@
 @import url(http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic);
 
 html {
-background-color: mintcream;
+background-color: beige;
 }
 body {
 	font-family: Lora, serif;
@@ -26,7 +26,6 @@ page {
 footer {
 	display: block;
 	text-align: right;
-	font-style: italic;
 	font-size: 80%;
 	padding: 1em;
 }
@@ -38,6 +37,9 @@ content {
 }
 content p {
 	line-height: 1.4; 
+}
+content p strong {
+	font-family: "Source Sans Pro"; 
 }
 content pre {
 	border-radius: 2px;
@@ -62,9 +64,9 @@ content a[href^="#"] {
 }
 
 content h1, content h2, content h3, content h4 {
-	font-family: "Source Code Pro"; color: black;
+	font-family: "Lora"; color: black;
 }
-content h1 { font-size: 2.4em; text-transform: uppercase; font-weight: normal; letter-spacing: -0.05em; }
+content h1 { font-size: 2.4em; text-transform: uppercase; font-weight: normal; letter-spacing: -0.05em; font-family: "Source Code Pro"; }
 content h1 em { font-style: normal; font-size: 180%; font-weight: bold; text-transform: lowercase;  }
 content h2 { font-size: 1.5em; }
 content h3 { font-size: 1.25em; }
@@ -72,3 +74,26 @@ content h4 { font-size: 1.125em; }
 content h5 { font-size: 1em; margin-bottom: 0; }
 content h2 { margin-top: 3em; }
 content h3 { margin-top: 2em; }
+
+footer { font-family: "Source Sans Pro"; }
+
+table.encoding {
+	font-family: "Source Code Pro"; empty-cells: hide;
+}
+table.encoding th { font-family: "Source Sans Pro"; }
+table.encoding td { background-color: white; border: 1px solid #ccc; }
+table.encoding td:first-letter { color: violetred; }
+table.big { font-size: 42px; vertical-align: middle; width: 35%; border-spacing: 0; }
+table.big td { text-align: center; background-color: white; }
+
+table.page { width: 100%; font-family: "Source Sans Pro"; border-spacing: 0; margin: 0 auto; margin-bottom: 6px; border-collapse: collapse; }
+table.page td { background-color: white; text-align: center; width: 512px; line-height: 15px; vertical-align: top; font-size: 11px; border: 1px solid #ccc; }
+table.page td.x { background-color: #ddd; color: #666; }
+table.page th:first-child { width: 50px; vertical-align: top; }
+
+div.page { width: 512px; }
+div.page u, div.page i { display: block; width: 16px; height: 16px; float: left; box-sizing:border-box; border: 1px solid #ccc; border-width: 0 0 1px 1px; }
+div.page u { background-color: #ddd; }
+div.page i { background-color: white; }
+div.page i.ascii { background-color: violet; }
+div.page .byte1 { background-color: #ccc; }
