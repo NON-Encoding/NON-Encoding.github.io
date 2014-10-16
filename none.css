@@ -1,0 +1,74 @@
+@import url(http://fonts.googleapis.com/css?family=Source+Code+Pro:300,400,600,700);
+@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic,700italic);
+@import url(http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic);
+
+html {
+background-color: mintcream;
+}
+body {
+	font-family: Lora, serif;
+	margin: 0;
+	padding: 0 0 2em 0;
+	color: #333;
+	font-size: 16px;
+}
+code, pre {
+	font-family: "Source Code Pro";
+}
+
+page {
+	display: block;
+	padding-left: 4cm;
+	width: 640px;
+	padding-right: 2cm;
+}
+
+footer {
+	display: block;
+	text-align: right;
+	font-style: italic;
+	font-size: 80%;
+	padding: 1em;
+}
+
+content {
+	display: block;
+	padding: 0em;
+	position: relative;
+}
+content p {
+	line-height: 1.4; 
+}
+content pre {
+	border-radius: 2px;
+	padding: 10px;
+	background-color: #eee8d5;
+	color: white;
+	tab-size: 4;
+	-moz-tab-size: 4;
+}
+content pre code {
+	color: black;
+}
+
+content p code {
+	color: #565A9D;
+	white-space: nowrap;
+	padding: 0 3px;
+}
+
+content a[href^="#"] {
+	text-decoration: none;
+}
+
+content h1, content h2, content h3, content h4 {
+	font-family: "Source Code Pro"; color: black;
+}
+content h1 { font-size: 2.4em; text-transform: uppercase; font-weight: normal; letter-spacing: -0.05em; }
+content h1 em { font-style: normal; font-size: 180%; font-weight: bold; text-transform: lowercase;  }
+content h2 { font-size: 1.5em; }
+content h3 { font-size: 1.25em; }
+content h4 { font-size: 1.125em; }
+content h5 { font-size: 1em; margin-bottom: 0; }
+content h2 { margin-top: 3em; }
+content h3 { margin-top: 2em; }
