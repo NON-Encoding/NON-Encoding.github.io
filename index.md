@@ -75,9 +75,9 @@ The qualities of this encoding scheme are:
 ## Code-Page
 
 **NONE** character-codes are arranged on the code page in such a way that the
-sequence of bits of a character's bytes as given in the encoding scheme 
+sequence of bits of a character's bytes (as given in the encoding scheme) 
 understood as one unsigned integer is the character code (code point).
-A _decoding_ is not required.
+A _decoding_ isn't required.
 
 All code points that cannot be encoded in the scheme aren't used. 
 
@@ -100,7 +100,10 @@ All code points that cannot be encoded in the scheme aren't used.
 <i></i><u></u><i></i><u></u><i></i><u></u><i></i><u></u><i></i><u></u><i></i><u></u><i></i><u></u><i></i><u></u><i></i><u></u><i></i><u></u><i></i><u></u><i></i><u></u><i></i><u></u><i></i><u></u><i></i><u></u><i></i><u></u>
 &nbsp;
 </div>
-
+The above grafic visualises the distribution of usable <i class='block'> </i> and 
+unsuable <u class='block'> </u> blocks for the first 2 bytes.
+Each block has a code space of 128 characters. The first block is assigned to
+the `ASCII` <i class='block ascii'>A</i> character set.
 
 
 ### Arithmetics
