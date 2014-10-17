@@ -92,8 +92,8 @@ table.page td.x { background-color: #ddd; color: #666; }
 table.page th:first-child { width: 50px; vertical-align: top; }
 
 div.page { width: 512px; }
-div.page u, div.page i { display: block; width: 16px; height: 16px; float: left; box-sizing:border-box; border: 1px solid #ccc; border-width: 0 0 1px 1px; }
+div.page u, div.page i { display: block; width: 16px; height: 16px; float: left; box-sizing:border-box; border: 1px solid #ccc; border-width: 1px 0 0 1px; }
 div.page u { background-color: #ddd; }
 div.page i { background-color: white; }
 div.page i.ascii { background-color: violet; }
-div.page .byte1 { background-color: #ccc; }
+div.page .byte1 { background-color: #eee; }
