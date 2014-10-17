@@ -5,52 +5,55 @@ title:  "NON-Encoding"
 
 # *N*ull *O*r *N*ext*-E*ncoding
 
-**NONE** is a variable-length character encoding and code-page standard. 
+**NONE** is a variable-length character encoding and code-page standard.<br/>
 
-## Principles
+While both encoding scheme and code-page can be used independently they are designed to go hand in hand.
+
+## Encoding
+
+**NONE** encoding is lightening simple and regular.
+
 1. Each character is identified by a single code, its character-code.
 2. Any character-code is encoded as a sequence of one or more bytes.
 3. If the MSB of a byte is `1` the character-code continues.
 4. If the MSB of a byte is `0` it is the last byte of a character-code.
 5. The bytes and bits are in Big-Endian order.
 
-## Encoding
-
 <table class='encoding'>
 <tr>
-	<th>Bits of<br/>Code</th>
 	<th>Byte 1</th>
 	<th>Byte 2</th>
 	<th>Byte 3</th>
 	<th>Byte 4</th>
+	<th>code space</th>
 </tr>
 <tr>
-	<th>7</th>
 	<td>0xxxxxxx</td>
 	<td></td>
 	<td></td>
 	<td></td>
+	<th>2<sup>7</sup>=128</th>
 </tr>
 <tr>
-	<th>14</th>
 	<td>1xxxxxxx</td>
 	<td>0xxxxxxx</td>
 	<td></td>
 	<td></td>
+	<th>2<sup>14</sup>=16,384</th>
 </tr>
 <tr>
-	<th>21</th>
 	<td>1xxxxxxx</td>
 	<td>1xxxxxxx</td>
 	<td>0xxxxxxx</td>
 	<td></td>
+	<th>2<sup>21</sup>=2,097,152</th>
 </tr>
 <tr>
-	<th>28</th>
 	<td>1xxxxxxx</td>
 	<td>1xxxxxxx</td>
 	<td>1xxxxxxx</td>
 	<td>0xxxxxxx</td>
+	<th>2<sup>28</sup>=268,435,456</th>
 </tr>
 <tr>
 	<th colspan="5">...</th>
