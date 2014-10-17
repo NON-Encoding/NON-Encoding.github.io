@@ -5,11 +5,14 @@ title:  "NON-Encoding"
 
 # *N*ull *O*r *N*ext*-E*ncoding
 
-**NONE** is a variable-length character encoding and code-page standard.<br/>
+**NONE** is a variable-length character encoding and code-page standard.
 
-While both encoding scheme and code-page can be used independently they are designed to go hand in hand.
+It is the intent of the encoding to become the only encoding needed and used;\\
+to make both programming and working with texts less frustrating.
 
-## Encoding
+Encoding finally has to become a **non-e**ncoding.
+
+## Encoding-Scheme
 
 **NONE** encoding is lightening simple and regular.
 
@@ -17,7 +20,7 @@ While both encoding scheme and code-page can be used independently they are desi
 2. Any character-code is encoded as a sequence of one or more bytes.
 3. If the MSB of a byte is `1` the character-code continues.
 4. If the MSB of a byte is `0` it is the last byte of a character-code.
-5. The bytes and bits are in Big-Endian order.
+5. The bits and bytes are in Big-Endian order.
 
 <table class='encoding'>
 <tr>
@@ -25,45 +28,61 @@ While both encoding scheme and code-page can be used independently they are desi
 	<th>Byte 2</th>
 	<th>Byte 3</th>
 	<th>Byte 4</th>
-	<th>code space</th>
+	<th>Code Space</th>
 </tr>
 <tr>
-	<td>0xxxxxxx</td>
+	<td class='byte'>0xxxxxxx</td>
 	<td></td>
 	<td></td>
 	<td></td>
-	<th>2<sup>7</sup>=128</th>
+	<td>&nbsp;2<sup>7</sup> = 128</td>
 </tr>
 <tr>
-	<td>1xxxxxxx</td>
-	<td>0xxxxxxx</td>
+	<td class='byte'>1xxxxxxx</td>
+	<td class='byte'>0xxxxxxx</td>
 	<td></td>
 	<td></td>
-	<th>2<sup>14</sup>=16,384</th>
+	<td>&nbsp;2<sup>14</sup> = 16,384</td>
 </tr>
 <tr>
-	<td>1xxxxxxx</td>
-	<td>1xxxxxxx</td>
-	<td>0xxxxxxx</td>
+	<td class='byte'>1xxxxxxx</td>
+	<td class='byte'>1xxxxxxx</td>
+	<td class='byte'>0xxxxxxx</td>
 	<td></td>
-	<th>2<sup>21</sup>=2,097,152</th>
+	<td>&nbsp;2<sup>21</sup> = 2,097,152</td>
 </tr>
 <tr>
-	<td>1xxxxxxx</td>
-	<td>1xxxxxxx</td>
-	<td>1xxxxxxx</td>
-	<td>0xxxxxxx</td>
-	<th>2<sup>28</sup>=268,435,456</th>
+	<td class='byte'>1xxxxxxx</td>
+	<td class='byte'>1xxxxxxx</td>
+	<td class='byte'>1xxxxxxx</td>
+	<td class='byte'>0xxxxxxx</td>
+	<td>&nbsp;2<sup>28</sup> = 268,435,456</td>
 </tr>
 <tr>
-	<th colspan="5">...</th>
+	<th colspan="4">...</th>
+	<td></td>
 </tr>
 </table>
 
+The qualities of this encoding scheme are:
+
+* `ASCII` compatible (single byte with `0` MSB)
+* <code>2<sup>14</sup> = 16,384</code> possible 2-byte characters (that is 8 times more than `UTF-8`)
+* any sequence of bits and bytes has a meaning (except for last byte of an input)
+* the schema naturally extends to any amount of bytes for a character
+* start and end byte of characters can be identified easy and efficiently within a stream of bytes without special knowledge (e.g. about the code-page).
+
 ## Code-Page
 
+**NONE** character-codes are arranged on the code page in such a way that the
+sequence of bits of a character's bytes as given in the encoding scheme 
+understood as one unsigned integer is the character code (code point).
+A _decoding_ is not required.
+
+All code points that cannot be encoded in the scheme aren't used. 
+
 <div class='page'>
-<i class='ascii byte1'></i><u class='byte1'></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u>
+<i class='ascii'>A</i><u class='byte1'></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u>
 <u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u>
 <u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u>
 <u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u>
@@ -81,6 +100,7 @@ While both encoding scheme and code-page can be used independently they are desi
 <i></i><u></u><i></i><u></u><i></i><u></u><i></i><u></u><i></i><u></u><i></i><u></u><i></i><u></u><i></i><u></u><i></i><u></u><i></i><u></u><i></i><u></u><i></i><u></u><i></i><u></u><i></i><u></u><i></i><u></u><i></i><u></u>
 &nbsp;
 </div>
+
 
 
 ### Arithmetics
