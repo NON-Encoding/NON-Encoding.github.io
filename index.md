@@ -6,16 +6,17 @@ title:  "NON-Encoding"
 # *N*ull *O*r *N*ext*-E*ncoding
 
 **NONE** is a variable-length character encoding and code-page standard.<br/>
+
 While both encoding scheme and code-page can be used independently they are designed to go hand in hand.
 
-## Principles
+## Encoding
+
+#### Principles
 1. Each character is identified by a single code, its character-code.
 2. Any character-code is encoded as a sequence of one or more bytes.
 3. If the MSB of a byte is `1` the character-code continues.
 4. If the MSB of a byte is `0` it is the last byte of a character-code.
 5. The bytes and bits are in Big-Endian order.
-
-## Encoding
 
 <table class='encoding'>
 <tr>
