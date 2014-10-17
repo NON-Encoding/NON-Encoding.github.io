@@ -5,7 +5,8 @@ title:  "NON-Encoding"
 
 # *N*ull *O*r *N*ext*-E*ncoding
 
-**NONE** is a variable-length character encoding and code-page standard. 
+**NONE** is a variable-length character encoding and code-page standard.<br/>
+While both encoding scheme and code-page can be used independently they are designed to go hand in hand.
 
 ## Principles
 1. Each character is identified by a single code, its character-code.
