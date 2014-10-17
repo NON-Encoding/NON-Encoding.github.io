@@ -18,42 +18,37 @@ title:  "NON-Encoding"
 
 <table class='encoding'>
 <tr>
-	<th>Bits of<br/>Code</th>
 	<th>Byte 1</th>
 	<th>Byte 2</th>
 	<th>Byte 3</th>
 	<th>Byte 4</th>
 </tr>
 <tr>
-	<th>7</th>
 	<td>0xxxxxxx</td>
 	<td></td>
 	<td></td>
 	<td></td>
 </tr>
 <tr>
-	<th>14</th>
 	<td>1xxxxxxx</td>
 	<td>0xxxxxxx</td>
 	<td></td>
 	<td></td>
 </tr>
 <tr>
-	<th>21</th>
 	<td>1xxxxxxx</td>
 	<td>1xxxxxxx</td>
 	<td>0xxxxxxx</td>
 	<td></td>
 </tr>
 <tr>
-	<th>28</th>
 	<td>1xxxxxxx</td>
 	<td>1xxxxxxx</td>
 	<td>1xxxxxxx</td>
 	<td>0xxxxxxx</td>
 </tr>
 <tr>
-	<th colspan="5">...</th>
+	<th colspan="4">...</th>
 </tr>
 </table>
 
