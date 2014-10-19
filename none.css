@@ -81,9 +81,9 @@ table.big td { text-align: center; background-color: white; }
 
 div.page { width: 512px; }
 div.page u, div.page i { display: block; width: 15px; height: 15px; float: left; margin: 1px 1px 0 0; text-align: center; vertical-align: middle; line-height: 15px; font-size: 15px; font-family: "Source Code Pro"; font-style: normal; }
-div.page u, u.block { background-color: #E3DAC9; }
-div.page i, i.block { background-color: white; }
-.ascii { color: #79443B; }
+div.page u, u.region { background-color: #e0d7c0; }
+div.page i, i.region { background-color: white; }
+div.page i.ascii, i.block.ascii { background-color: #79443B; }
 .page .byte1 {  }
-.block { display: inline-block; width: 15px; height: 15px; text-align: center; vertical-align: middle; line-height: 15px; font-size: 15px; font-family: "Source Code Pro"; font-style: normal; }
+.region { display: inline-block; width: 15px; height: 15px; text-align: center; vertical-align: middle; line-height: 15px; font-size: 15px; font-family: "Source Code Pro"; font-style: normal; border: 1px solid #e0d7c0; }
 

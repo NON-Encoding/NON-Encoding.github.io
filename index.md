@@ -82,7 +82,7 @@ A _decoding_ isn't required.
 All code points that cannot be encoded in the scheme aren't used. 
 
 <div class='page'>
-<i class='ascii'>A</i><u class='byte1'></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u>
+<i class='ascii'></i><u class='byte1'></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u>
 <u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u>
 <u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u>
 <u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u>
@@ -100,13 +100,19 @@ All code points that cannot be encoded in the scheme aren't used.
 <i></i><u></u><i></i><u></u><i></i><u></u><i></i><u></u><i></i><u></u><i></i><u></u><i></i><u></u><i></i><u></u><i></i><u></u><i></i><u></u><i></i><u></u><i></i><u></u><i></i><u></u><i></i><u></u><i></i><u></u><i></i><u></u>
 &nbsp;
 </div>
-The above grafic visualises the distribution of usable <i class='block'> </i> and 
-unsuable <u class='block'> </u> blocks for the first 2 bytes.
-Each block has a code space of 128 characters. The first block is assigned to
-the `ASCII` <i class='block ascii'>A</i> character set.
+The above illustrates the distribution of usable <i class='region'> </i> and 
+unusable <u class='region'> </u> regions within the first 2 bytes each having
+a code space of 128 characters. 
+The first region is assigned to the `ASCII` <i class='region ascii'></i> 
+character set.
+
+This comb like pattern reoccurs 128 times within the the first 3 bytes in the
+second half of its code space. This again reoccurs 128 times within the first
+4 bytes and so forth. The `ASCII` region though is an artefact of single byte
+characters and special to the first comb. It does not reoccur in later combs.
 
 
-### Arithmetics
+### Arithmetic's
 
 <table class='big'>
 <tr><th></th><th>+</th><th>=</th></tr>
