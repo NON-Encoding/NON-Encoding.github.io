@@ -3,7 +3,7 @@ layout: default
 title:  "NON-Encoding"
 ---
 
-# *N*ull *O*r *N*ext*-E*ncoding
+# *N*ull *O*r *N*ext-*E*ncoding
 
 **NONE** is a variable-length universal character encoding and code-page standard.
 
@@ -21,6 +21,8 @@ Encoding finally has to become a **non-e**ncoding.
 3. If the MSB of a byte is `1` the character-code continues.
 4. If the MSB of a byte is `0` it is the last byte of a character-code.
 5. The bits and bytes are in Big-Endian order.
+
+Thereby the different character-codes can be encoded with one or more bytes:
 
 <table class='encoding'>
 <tr>
@@ -76,10 +78,9 @@ The qualities of this encoding scheme are:
 ## Code-Page
 
 **NONE** _encoding_ and _decoding_ from and to character-codes is as 
-straightforward as it can get. All character-codes are just allocated on the 
-code page in such a way that the sequence of bits of a character's bytes 
-(as given in the encoding scheme) understood as one unsigned integer is the 
-character code (code point).
+straightforward as it can get. All character-codes are allocated on the 
+code page in such a way that the _encoded_ sequence of bits of a character's 
+bytes interpreted as one unsigned integer is the character code (code point).
 
 <table class='encoding'>
 <tr>
@@ -112,7 +113,7 @@ The code for a 2-byte character is e.g. extracted from the character's bytes
 to a  32-bit integer by loading them into a register - vice versa a code could 
 be split into _encoded_ bytes by simply removing leading zero bytes. 
 
-All code points that cannot be encoded to be used in such a way aren't allocated. 
+All codes (numeric values) that cannot be used in such a way aren't allocated. 
 
 <div class='page'>
 <i class='ascii'></i><u class='byte1'></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u>
@@ -145,10 +146,13 @@ second half of its code space. This again reoccurs 128 times within for
 The `ASCII` region though is an artefact of single byte characters and special 
 to the first comb. It does not reoccur in later combs.
 
-The assignment of codes to character is withal not arbitrary. 
+TODO byte 1,2,3,4
+
+The assignment of characters to codes is withal not arbitrary. 
 With `ASCII` as basis any other character gets assigned to a code so that a 
-number of properties emerge that help to simplify common tasks when working
-with encoded text. 
+handful of crucial properties emerge that make arithmetic of common text 
+processing tasks simpler and more efficient.
+
 
 
 ## Properties
@@ -168,22 +172,22 @@ with encoded text.
 ## Motivation
 
 #### History
-Encoding is a necessity to give the significance of characters to otherwise 
-meaningless sequences of bits and bytes. Historically a variety of encodings
-have coexisted on different systems for different languages. 
-Each language space had its own predominant encoding that often differed for 
-the different systems. 
+Encoding is a necessity to give bits and bytes the meaning of characters and 
+text. 
+Historically a variety of encodings have coexisted on different systems for 
+different scripts. 
+Each language space had its own predominant encoding that often also differed 
+for the diverse systems. 
 
-When content started to cross system borders more frequently due to growing
+When text content started to cross system borders more frequently due to growing
 interconnection of computer systems their users were faced with a new kind of
-incompatibly as programs more frequently failed to correctly give meaning to 
-bits and bytes of text.
+incompatibly as programs could not interpret the bits and bytes of text correctly.
 
-If interconnected programs and systems should understand each other they had
-to speak a commonly understood _language_. `UTF-8` became more and more 
-popular. But a universal encoding comes with new problems: Instead of one 
-spoken language it has to encode characters of all spoken languages and a wide
-variety of other symbols while still being efficient. 
+Interconnected programs and systems that shared text also needed to share a
+commonly understood encoding. But a universal encoding comes with 
+new problems: Instead of one script it now had to encode characters of all the 
+world's scripts and a wide variety of other symbols while still being efficient. 
 
-
+#### The Unicode Dilemma
+Today...
 
