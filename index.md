@@ -5,7 +5,7 @@ title:  "NON-Encoding"
 
 # *N*ull *O*r *N*ext*-E*ncoding
 
-**NONE** is a variable-length character encoding and code-page standard.
+**NONE** is a variable-length universal character encoding and code-page standard.
 
 It is the intent of the encoding to become the only encoding needed and used;\\
 to make both programming and working with texts less frustrating.
@@ -31,7 +31,7 @@ Encoding finally has to become a **non-e**ncoding.
 	<th>Code Space</th>
 </tr>
 <tr>
-	<td class='byte'>0xxxxxxx</td>
+	<td class='byte last'>0xxxxxxx</td>
 	<td></td>
 	<td></td>
 	<td></td>
@@ -39,7 +39,7 @@ Encoding finally has to become a **non-e**ncoding.
 </tr>
 <tr>
 	<td class='byte'>1xxxxxxx</td>
-	<td class='byte'>0xxxxxxx</td>
+	<td class='byte last'>0xxxxxxx</td>
 	<td></td>
 	<td></td>
 	<td>&nbsp;2<sup>14</sup> = 16,384</td>
@@ -47,7 +47,7 @@ Encoding finally has to become a **non-e**ncoding.
 <tr>
 	<td class='byte'>1xxxxxxx</td>
 	<td class='byte'>1xxxxxxx</td>
-	<td class='byte'>0xxxxxxx</td>
+	<td class='byte last'>0xxxxxxx</td>
 	<td></td>
 	<td>&nbsp;2<sup>21</sup> = 2,097,152</td>
 </tr>
@@ -55,7 +55,7 @@ Encoding finally has to become a **non-e**ncoding.
 	<td class='byte'>1xxxxxxx</td>
 	<td class='byte'>1xxxxxxx</td>
 	<td class='byte'>1xxxxxxx</td>
-	<td class='byte'>0xxxxxxx</td>
+	<td class='byte last'>0xxxxxxx</td>
 	<td>&nbsp;2<sup>28</sup> = 268,435,456</td>
 </tr>
 <tr>
@@ -70,16 +70,49 @@ The qualities of this encoding scheme are:
 * <code>2<sup>14</sup> = 16,384</code> possible 2-byte characters (that is 8 times more than `UTF-8`)
 * any sequence of bits and bytes has a meaning (except for last byte of an input)
 * the schema naturally extends to any amount of bytes for a character
-* start and end byte of characters can be identified easy and efficiently within a stream of bytes without special knowledge (e.g. about the code-page).
+* a start or end byte of a character can be identified simple and efficient 
+  within any stream of bytes without special knowledge (e.g. about the code-page).
 
 ## Code-Page
 
-**NONE** character-codes are arranged on the code page in such a way that the
-sequence of bits of a character's bytes (as given in the encoding scheme) 
-understood as one unsigned integer is the character code (code point).
-A _decoding_ isn't required.
+**NONE** _encoding_ and _decoding_ from and to character-codes is as 
+straightforward as it can get. All character-codes are just allocated on the 
+code page in such a way that the sequence of bits of a character's bytes 
+(as given in the encoding scheme) understood as one unsigned integer is the 
+character code (code point).
 
-All code points that cannot be encoded in the scheme aren't used. 
+<table class='encoding'>
+<tr>
+	<th></th>
+	<th></th>
+	<th></th>
+	<th>Byte 1</th>
+	<th>Byte 2</th>
+	<th>Code</th>
+</tr>
+<tr>
+	<th>Bytes</th>
+	<td></td>
+	<td></td>
+	<td class='byte'>11100000</td>
+	<td class='byte'>01100101</td>
+	<td></td>
+</tr>
+<tr>
+	<th>uint32&nbsp;</th>
+	<td>00000000</td>
+	<td>00000000</td>
+	<td class='charcode'>11100000</td>
+	<td class='charcode'>01100101</td>
+	<td>= 57445</td>
+</tr>
+</table>
+
+The code for a 2-byte character is e.g. extracted from the character's bytes 
+to a  32-bit integer by loading them into a register - vice versa a code could 
+be split into _encoded_ bytes by simply removing leading zero bytes. 
+
+All code points that cannot be encoded to be used in such a way aren't allocated. 
 
 <div class='page'>
 <i class='ascii'></i><u class='byte1'></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u>
@@ -100,25 +133,57 @@ All code points that cannot be encoded in the scheme aren't used.
 <i></i><u></u><i></i><u></u><i></i><u></u><i></i><u></u><i></i><u></u><i></i><u></u><i></i><u></u><i></i><u></u><i></i><u></u><i></i><u></u><i></i><u></u><i></i><u></u><i></i><u></u><i></i><u></u><i></i><u></u><i></i><u></u>
 &nbsp;
 </div>
-The above illustrates the distribution of usable <i class='region'> </i> and 
-unusable <u class='region'> </u> regions within the first 2 bytes each having
+The above table shows the distribution of usable (white <i class='region'> </i>)
+and unusable (cream <u class='region'> </u>) regions within the first 2 bytes each having
 a code space of 128 characters. 
 The first region is assigned to the `ASCII` <i class='region ascii'></i> 
 character set.
 
-This comb like pattern reoccurs 128 times within the the first 3 bytes in the
-second half of its code space. This again reoccurs 128 times within the first
-4 bytes and so forth. The `ASCII` region though is an artefact of single byte
-characters and special to the first comb. It does not reoccur in later combs.
+This comb like pattern reoccurs 128 times within the 3-byte range in the
+second half of its code space. This again reoccurs 128 times within for 
+4-byte range and so forth. 
+The `ASCII` region though is an artefact of single byte characters and special 
+to the first comb. It does not reoccur in later combs.
+
+The assignment of codes to character is withal not arbitrary. 
+With `ASCII` as basis any other character gets assigned to a code so that a 
+number of properties emerge that help to simplify common tasks when working
+with encoded text. 
 
 
+## Properties
+
+<!-- 
 ### Arithmetic's
 
 <table class='big'>
 <tr><th></th><th>+</th><th>=</th></tr>
-<tr><td>e</td><td>´<td>é</td></tr>
-<tr><td>a</td><td>´<td>á</td></tr>
-<tr><td>e</td><td>^<td>ê</td></tr>
-<tr><td>a</td><td>^<td>â</td></tr>
+<tr><td>e</td><td>´</td><td>é</td></tr>
+<tr><td>a</td><td>´</td><td>á</td></tr>
+<tr><td>e</td><td>^</td><td>ê</td></tr>
+<tr><td>a</td><td>^</td><td>â</td></tr>
 </table>
+-->
+
+## Motivation
+
+#### History
+Encoding is a necessity to give the significance of characters to otherwise 
+meaningless sequences of bits and bytes. Historically a variety of encodings
+have coexisted on different systems for different languages. 
+Each language space had its own predominant encoding that often differed for 
+the different systems. 
+
+When content started to cross system borders more frequently due to growing
+interconnection of computer systems their users were faced with a new kind of
+incompatibly as programs more frequently failed to correctly give meaning to 
+bits and bytes of text.
+
+If interconnected programs and systems should understand each other they had
+to speak a commonly understood _language_. `UTF-8` became more and more 
+popular. But a universal encoding comes with new problems: Instead of one 
+spoken language it has to encode characters of all spoken languages and a wide
+variety of other symbols while still being efficient. 
+
+
 

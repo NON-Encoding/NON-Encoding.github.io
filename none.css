@@ -75,9 +75,10 @@ table.encoding { font-family: "Source Code Pro"; empty-cells: hide; border-spaci
 table.encoding th { font-family: "Source Sans Pro"; }
 table.encoding td.byte { background-color: white; border: 1px solid #E3DAC9; }
 table.encoding td.byte:first-letter { color: #79443B; }
+table.encoding td.byte.last:first-letter { font-weight:bold; }
 
-table.big { font-size: 42px; vertical-align: middle; width: 35%; border-spacing: 0; }
-table.big td { text-align: center; background-color: white; }
+table.big { font-size: 28px; vertical-align: middle; border-spacing: 0; }
+table.big td { text-align: center; background-color: white; padding: 0 0.5em }
 
 div.page { width: 512px; }
 div.page u, div.page i { display: block; width: 15px; height: 15px; float: left; margin: 1px 1px 0 0; text-align: center; vertical-align: middle; line-height: 15px; font-size: 15px; font-family: "Source Code Pro"; font-style: normal; }
