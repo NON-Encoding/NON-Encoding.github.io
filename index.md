@@ -146,7 +146,9 @@ second half of its code space. This again reoccurs 128 times within for
 The `ASCII` region though is an artefact of single byte characters and special 
 to the first comb. It does not reoccur in later combs.
 
+<!--
 TODO byte 1,2,3,4
+-->
 
 The assignment of characters to codes is withal not arbitrary. 
 With `ASCII` as basis any other character gets assigned to a code so that a 
@@ -181,7 +183,8 @@ for the diverse systems.
 
 When text content started to cross system borders more frequently due to growing
 interconnection of computer systems their users were faced with a new kind of
-incompatibly as programs could not interpret the bits and bytes of text correctly.
+incompatibly as programs could not handle the bits and bytes of _alien_ text 
+correctly.
 
 Interconnected programs and systems that shared text also needed to share a
 commonly understood encoding. But a universal encoding comes with 
@@ -189,5 +192,44 @@ new problems: Instead of one script it now had to encode characters of all the
 world's scripts and a wide variety of other symbols while still being efficient. 
 
 #### The Unicode Dilemma
-Today...
+Today `Unicode` as `UTF-8` or `UTF-16` encoding is used for more and more
+documents. The idea of a universal encoding is widely established and very 
+appreciated among programmers. 
+
+The vision of a common _encoding_ and as a consequence thereof the 
+_disappearance_ of encoding as a source of complexity and failure seems to 
+become reality at some point in the nearer future. 
+
+In the enthusiasm of escaping the arisen encoding nightmares of the past we 
+have unfortunately overlooked that `Unicode` does not fulfil the vision of one
+text encoding and the end of complexity and encoding incompatibilities. 
+
+A closer look into the details of `Unicode` discloses critical flaws. 
+[Modifier characters](http://www.unicode.org/charts/) corrupt the (often made) 
+assumption among programmers that a code-point corresponds to a character (symbol)
+whereby character length and index access is either incorrect or inefficient. 
+Complex [normalisation forms](http://unicode.org/reports/tr15/) imply that the 
+same character can be encoded differently; as a consequence a banal 
+equality check for encoded text is far from being trivial or efficient.
+
+Paradoxically `Unicode` includes *multiple* encodings so that programs still 
+have to make their best effort to guess text encoding right what is exactly what 
+a *uni*versal encoding should have fixed. 
+To make matters worse the popular `UTF-8` and `UTF-16` encoding schemata require
+well-formed byte sequences for correctly encoded text what either is 
+validated (what is a performance defect) or ignored (what is incorrect).
+
+<!--
+Encoding is fundamental for a wide range of applications - if nothing else, 
+programming itself heavily builds upon encoded text. 
+
+... comlexity gets into application code.. 
+-->
+
+#### The Future
+
+It's _text_, we all know how to handle that.
+
+
+
 
