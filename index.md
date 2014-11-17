@@ -193,33 +193,34 @@ world's scripts and a wide variety of other symbols while still being efficient.
 
 #### The Unicode Dilemma
 Today `Unicode` as `UTF-8` or `UTF-16` encoding is used for more and more
-documents. The idea of a universal encoding is widely established and very 
+text documents. The idea of a universal encoding is widely established and very 
 appreciated among programmers. 
 
 The vision of a common _encoding_ and as a consequence thereof the 
 _disappearance_ of encoding as a source of complexity and failure seems to 
 become reality at some point in the nearer future. 
 
-In the enthusiasm of escaping the arisen encoding nightmares of the past we 
-have unfortunately overlooked that `Unicode` does not fulfil the vision of one
-text encoding and the end of complexity and encoding incompatibilities. 
-
-A closer look into the details of `Unicode` discloses critical flaws. 
-[Modifier characters](http://www.unicode.org/charts/) corrupt the (often made) 
-assumption among programmers that a code-point corresponds to a character (symbol)
-whereby character length and index access is either incorrect or inefficient. 
-Complex [normalisation forms](http://unicode.org/reports/tr15/) imply that the 
-same character can be encoded differently; as a consequence a banal 
-equality check for encoded text is far from being trivial or efficient.
+This is an illusion though. On closer inspection `Unicode` discloses critical flaws. 
+[Modifier characters](http://www.unicode.org/charts/) corrupt a equivalence
+between a code-point and a character (symbol) whereby character count and 
+indexed access is either incorrect or inefficient. 
+[Normalisation forms](http://unicode.org/reports/tr15/) grotesquely exhibit
+how the same character can be encoded differently; as a consequence a 
+banal equality check for encoded text is far from being trivial or efficient.
 
 Paradoxically `Unicode` includes *multiple* encodings so that programs still 
-have to make their best effort to guess text encoding right what is exactly what 
-a *uni*versal encoding should have fixed. 
-To make matters worse the popular `UTF-8` and `UTF-16` encoding schemata require
-well-formed byte sequences for correctly encoded text what either is 
-validated (what is a performance defect) or ignored (what is incorrect).
+have to make their best effort to guess text encoding right - 
+what is exactly what a *uni*versal encoding should have corrected. 
+To make matters worse the popular `UTF-8` and `UTF-16` encoding schemata do not
+render the occurrence of malformed byte sequences impossible. Validating all 
+text input however is unreasonable inefficient, 
+wherefore it is often dropped, what is incorrect.
+
 
 <!--
+`Unicode` does not fulfil the vision of one
+text encoding and the end of complexity and encoding incompatibilities. 
+
 Encoding is fundamental for a wide range of applications - if nothing else, 
 programming itself heavily builds upon encoded text. 
 
