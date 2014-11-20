@@ -197,35 +197,33 @@ text documents. The idea of a universal encoding is widely established and very
 appreciated among programmers. 
 
 The vision of a common _encoding_ and as a consequence thereof the 
-_disappearance_ of encoding as a source of complexity and failure seems to 
-become reality at some point in the nearer future. 
+_disappearance_ of encoding as a source of complexity and failure seems to be
+within one's grasp. 
 
-This is an illusion though. On closer inspection `Unicode` discloses critical flaws. 
-[Modifier characters](http://www.unicode.org/charts/) corrupt a equivalence
-between a code-point and a character (symbol) whereby character count and 
-indexed access is either incorrect or inefficient. 
+This is an illusion though. On closer inspection `Unicode` unfolds critical flaws. 
+[Modifier characters](http://www.unicode.org/charts/#CombiningDiacriticalMarks) 
+corrupt a equivalence between a code-point and a visible character whereby 
+character count and indexed access is either incorrect or inefficient. 
 [Normalisation forms](http://unicode.org/reports/tr15/) grotesquely exhibit
 how the same character can be encoded differently; as a consequence a 
-banal equality check for encoded text is far from being trivial or efficient.
+banal equality check is far from being trivial or efficient.
+[Presentation forms](http://www.unicode.org/charts/PDF/UFB00.pdf) are likewise
+unfortunate. 
 
 Paradoxically `Unicode` includes *multiple* encodings so that programs still 
 have to make their best effort to guess text encoding right - 
-what is exactly what a *uni*versal encoding should have corrected. 
+exactly what a *uni*versal encoding should have corrected. 
 To make matters worse the popular `UTF-8` and `UTF-16` encoding schemata do not
-render the occurrence of malformed byte sequences impossible. Validating all 
-text input however is unreasonable inefficient, 
-wherefore it is often dropped, what is incorrect.
+render the occurrence of malformed byte sequences impossible. 
+Constantly validating text IO however is unreasonable inefficient, 
+wherefore it is often dropped, what in turn is incorrect.
+All of this makes the unpleasant cascades of conditional constructs needed to 
+encode or decode `UTF-8` almost appear like a triviality. 
 
-
-<!--
-`Unicode` does not fulfil the vision of one
-text encoding and the end of complexity and encoding incompatibilities. 
-
-Encoding is fundamental for a wide range of applications - if nothing else, 
-programming itself heavily builds upon encoded text. 
-
-... comlexity gets into application code.. 
--->
+Regrettably `Unicode` is not **one** text encoding, it does not put and end to 
+encoding incompatibilities and constant recoding. 
+It rather gives birth complex code trapped in a dilemma to choose between 
+correct and efficient.
 
 #### The Future
 
