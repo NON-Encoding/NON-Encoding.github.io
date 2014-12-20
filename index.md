@@ -207,23 +207,24 @@ character count and indexed access is either incorrect or inefficient.
 [Normalisation forms](http://unicode.org/reports/tr15/) grotesquely exhibit
 how the same character can be encoded differently; as a consequence a 
 banal equality check is far from being trivial or efficient.
-[Presentation forms](http://www.unicode.org/charts/PDF/UFB00.pdf) are likewise
-unfortunate. 
+[Presentation forms](http://www.unicode.org/charts/PDF/UFB00.pdf),
+[surrogate pairs](http://unicodebook.readthedocs.org/en/latest/unicode_encodings.html#utf-16-surrogate-pairs)
+or [byte order marks](http://unicodebook.readthedocs.org/en/latest/unicode_encodings.html#byte-order-marks-bom)
+are likewise unfortunate. 
 
 Paradoxically `Unicode` includes *multiple* encodings so that programs still 
 have to make their best effort to guess text encoding right - 
 exactly what a *uni*versal encoding should have corrected. 
 To make matters worse the popular `UTF-8` and `UTF-16` encoding schemata do not
 render the occurrence of malformed byte sequences impossible. 
-Constantly validating text IO however is unreasonable inefficient, 
+Constantly validating text IO, however, is unreasonable inefficient, 
 wherefore it is often dropped, what in turn is incorrect.
-All of this makes the unpleasant cascades of conditional constructs needed to 
-encode or decode `UTF-8` almost appear like a triviality. 
+Considering that makes the unpleasant cascades of conditional constructs needed 
+to encode or decode `UTF-8` almost appear like a triviality. 
 
-Regrettably `Unicode` is not **one** text encoding, it does not put and end to 
-encoding incompatibilities and constant recoding. 
-It rather gives birth complex code trapped in a dilemma to choose between 
-correct and efficient.
+Regrettably `Unicode` is not **one** text encoding, it does not end encoding 
+incompatibilities and constant recoding but rather gives birth to complex code 
+trapped in a dilemma to choose between efficient or correct.
 
 #### The Future
 
