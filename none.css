@@ -30,6 +30,15 @@ footer {
 	padding: 1em;
 }
 
+blockquote {
+	font-style: italic;
+	text-align: center;
+	margin: 0.4em 2em;
+}
+blockquote p { margin: 0; }
+
+dt { font-weight: bold; }
+
 content {
 	display: block;
 	padding: 0em;

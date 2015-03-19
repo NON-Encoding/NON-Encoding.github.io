@@ -150,14 +150,30 @@ to the first comb. It does not reoccur in later combs.
 TODO byte 1,2,3,4
 -->
 
+## Properties
 The assignment of characters to codes is withal not arbitrary. 
 With `ASCII` as basis any other character gets assigned to a code so that a 
 handful of crucial properties emerge that make arithmetic of common text 
 processing tasks simpler and more efficient.
 
+Definiteness
+: There is one and only one sequence of bytes to represent a particular character. Characters do encode meaning, never presentation aspects.
 
+  > 1 character **=** 1 code **=** 1 sequence of bytes
+ 
+Analogousness
+: If two sequences of bytes are equal they always do represent the same sequence of characters.
 
-## Properties
+  > bytes of a sequence of characters **=** sequence of bytes of those characters
+
+Reducibility
+: > reduction to Roman/ASCII is done by dropping all but a character's last byte.
+
+Composability
+: > composition of letters and diacritics is done by adding bytes or codes
+
+Alphabetical Arrangement
+: > position and distance between letters or digits within the same alphabet is calculated by adding and subtracting their codes
 
 <!-- 
 ### Arithmetic's
@@ -219,7 +235,7 @@ To make matters worse the popular `UTF-8` and `UTF-16` encoding schemata do not
 render the occurrence of malformed byte sequences impossible. 
 Constantly validating text IO, however, is unreasonable inefficient, 
 wherefore it is often dropped, what in turn is incorrect.
-Considering that makes the unpleasant cascades of conditional constructs needed 
+Considering all that makes the unpleasant cascades of conditional constructs needed 
 to encode or decode `UTF-8` almost appear like a triviality. 
 
 Regrettably `Unicode` is not **one** text encoding, it does not end encoding 
