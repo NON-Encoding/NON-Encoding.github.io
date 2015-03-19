@@ -7,7 +7,7 @@ title:  "NON-Encoding"
 
 **NONE** is a variable-length universal character encoding and code-page standard.
 
-It is the intent of the encoding to become the only encoding needed and used;\\
+It is the intent of the encoding to become the only text encoding needed and used;\\
 to make both programming and working with texts less frustrating.
 
 Encoding finally has to become a **non-e**ncoding.
