@@ -3,7 +3,7 @@ layout: default
 title:  "NON-Encoding"
 ---
 
-# *N*ull *O*r *N*ext-*E*ncoding
+# *N*ull *O*r *N*ext *E*ncoding
 
 **NONE** is a variable-length universal character encoding and code-page standard.
 
@@ -116,7 +116,7 @@ be split into _encoded_ bytes by simply removing leading zero bytes.
 All codes (numeric values) that cannot be used in such a way aren't allocated. 
 
 <div class='page'>
-<i class='ascii'></i><u class='byte1'></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u>
+<i class='ascii'>A</i><u class='byte1'></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u>
 <u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u>
 <u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u>
 <u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u>
@@ -132,12 +132,13 @@ All codes (numeric values) that cannot be used in such a way aren't allocated.
 <i></i><u></u><i></i><u></u><i></i><u></u><i></i><u></u><i></i><u></u><i></i><u></u><i></i><u></u><i></i><u></u><i></i><u></u><i></i><u></u><i></i><u></u><i></i><u></u><i></i><u></u><i></i><u></u><i></i><u></u><i></i><u></u>
 <i></i><u></u><i></i><u></u><i></i><u></u><i></i><u></u><i></i><u></u><i></i><u></u><i></i><u></u><i></i><u></u><i></i><u></u><i></i><u></u><i></i><u></u><i></i><u></u><i></i><u></u><i></i><u></u><i></i><u></u><i></i><u></u>
 <i></i><u></u><i></i><u></u><i></i><u></u><i></i><u></u><i></i><u></u><i></i><u></u><i></i><u></u><i></i><u></u><i></i><u></u><i></i><u></u><i></i><u></u><i></i><u></u><i></i><u></u><i></i><u></u><i></i><u></u><i></i><u></u>
-&nbsp;
 </div>
-The above table shows the distribution of usable (white <i class='region'> </i>)
-and unusable (cream <u class='region'> </u>) regions within the first 2 bytes each having
+<br/>
+
+The above table shows the distribution of usable (<i class='region'> </i>)
+and unusable (<u class='region'> </u>) regions within the first 2 bytes each having
 a code space of 128 characters. 
-The first region is assigned to the `ASCII` <i class='region ascii'></i> 
+The first region is assigned to the `ASCII` <i class='region ascii'>A</i> 
 character set.
 
 This comb like pattern reoccurs 128 times within the 3-byte range in the

@@ -1,9 +1,10 @@
 @import url(http://fonts.googleapis.com/css?family=Source+Code+Pro:300,400,600,700);
 @import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic,700italic);
 @import url(http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic);
+@import url(http://fonts.googleapis.com/css?family=Vidaloka:400italic,400);
 
 html {
-background-color: #F5F1DC;
+/* background-color: #F5F1DC; */
 }
 body {
 	font-family: Lora, serif;
@@ -46,9 +47,12 @@ content {
 }
 content p {
 	line-height: 1.4; 
+	clear: both;
 }
 content p strong {
-	font-family: "Source Sans Pro"; 
+	font-family: Vidaloka; 
+	text-transform: lowercase;
+	font-weight: normal;
 }
 content pre {
 	border-radius: 2px;
@@ -67,13 +71,13 @@ content a[href^="#"] {
 }
 
 content h1, content h2, content h3, content h4 {
-	font-family: "Lora"; color: black;
+	font-family: Vidaloka, serif; color: black;
 }
-content h1 { font-size: 2.4em; text-transform: uppercase; font-weight: normal; letter-spacing: -0.05em; font-family: "Source Code Pro"; color: #79443B; }
-content h1 em { font-style: normal; font-size: 180%; font-weight: bold; text-transform: lowercase; color: black; }
-content h2 { font-size: 1.5em; }
-content h3 { font-size: 1.25em; }
-content h4 { font-size: 1.125em; }
+content h1 { font-size: 2.4em; text-transform: uppercase; font-weight: normal; letter-spacing: -0.05em; font-family: Vidaloka, serif; word-spacing: 0.3em; }
+content h1 em { font-style: normal; font-size: 180%; font-weight: bold; text-transform: lowercase; color: black; letter-spacing: 3px; }
+content h2 { font-size: 1.75em; }
+content h3 { font-size: 1.5em; }
+content h4 { font-size: 1.25em; }
 content h5 { font-size: 1em; margin-bottom: 0; }
 content h2 { margin-top: 3em; }
 content h3 { margin-top: 2em; }
@@ -82,18 +86,18 @@ footer { font-family: "Source Sans Pro"; }
 
 table.encoding { font-family: "Source Code Pro"; empty-cells: hide; border-spacing: 0 4px; border-collapse: separate; }
 table.encoding th { font-family: "Source Sans Pro"; }
-table.encoding td.byte { background-color: white; border: 1px solid #E3DAC9; }
-table.encoding td.byte:first-letter { color: #79443B; }
+table.encoding td.byte { background-color: black; color: white; border-right: 1px solid white; }
+table.encoding td.byte:first-letter { font-weight: bold; }
 table.encoding td.byte.last:first-letter { font-weight:bold; }
 
 table.big { font-size: 28px; vertical-align: middle; border-spacing: 0; }
 table.big td { text-align: center; background-color: white; padding: 0 0.5em }
 
-div.page { width: 512px; }
+div.page { width: 512px; border: 1px solid black; border-width: 0 0 1px 1px; float: left; }
 div.page u, div.page i { display: block; width: 15px; height: 15px; float: left; margin: 1px 1px 0 0; text-align: center; vertical-align: middle; line-height: 15px; font-size: 15px; font-family: "Source Code Pro"; font-style: normal; }
-div.page u, u.region { background-color: #e0d7c0; }
-div.page i, i.region { background-color: white; }
-div.page i.ascii, i.region.ascii { background-color: #79443B; }
+div.page u, u.region { background-color: white; border: 1px solid black; border-width: 1px 1px 0 0; margin: 0; }
+div.page i, i.region { background-color: black; }
+div.page i.ascii, i.region.ascii { color: white; }
 .page .byte1 {  }
-.region { display: inline-block; width: 15px; height: 15px; text-align: center; vertical-align: middle; line-height: 15px; font-size: 15px; font-family: "Source Code Pro"; font-style: normal; border: 1px solid #e0d7c0; }
+.region { display: inline-block; width: 15px; height: 15px; text-align: center; vertical-align: middle; line-height: 15px; font-size: 15px; font-family: "Source Code Pro"; font-style: normal; border: 1px solid black; }
 
