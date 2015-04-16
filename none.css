@@ -67,6 +67,10 @@ content a[href^="#"] {
 	text-decoration: none;
 }
 
+content p strong {
+	font-family: sans-serif;
+}
+
 content h1, content h2, content h3, content h4, content h5 {
 	font-family: Vidaloka, serif; color: black;
 }
@@ -79,17 +83,17 @@ content h5 { font-size: 1em; display: inline; margin-right: 0.5em; }
 content h2 { margin-top: 3em; }
 content h3 { margin-top: 2em; }
 
-table.encoding { font-family: "Source Code Pro"; empty-cells: hide; border-spacing: 1px 4px; border-collapse: separate; }
+table.encoding { font-family: "Source Code Pro"; empty-cells: hide; border-spacing: 1px 3px; border-collapse: separate; }
 table.encoding th {  }
-table.encoding td.byte { border: 1px solid black; }
+table.encoding td.byte { border: 1px solid #444; line-height: 1em; }
 table.encoding td.byte:first-letter { font-weight: bold; }
 table.encoding td.byte.last:first-letter { font-weight:bold; }
 
 table.big { font-size: 28px; vertical-align: middle; border-spacing: 0; }
 table.big td { text-align: center; background-color: white; padding: 0 0.5em }
 
-div.page { width: 512px; border: 1px solid black; border-width: 0 0 1px 1px; float: left; }
-div.page u, div.page i { display: block; width: 15px; height: 15px; float: left; border: 1px solid black; border-width: 1px 1px 0 0; margin: 0; text-align: center; vertical-align: middle; line-height: 15px; font-size: 15px; font-family: "Source Code Pro"; font-style: normal; }
+div.page { width: 512px; border: 1px solid #444; border-width: 0 0 1px 1px; float: left; }
+div.page u, div.page i { display: block; width: 15px; height: 15px; float: left; border: 1px solid #444; border-width: 1px 1px 0 0; margin: 0; text-align: center; vertical-align: middle; line-height: 15px; font-size: 15px; font-family: "Source Code Pro"; font-style: normal; }
 div.page u, u.region { background-color: white; }
 div.page i, i.region { background: linear-gradient(-45deg, white 25%, black 25%, black 50%, white 50%, white 75%, black 75%); 
 		background-size: 4px 4px;

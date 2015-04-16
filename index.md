@@ -37,7 +37,7 @@ Thereby the different character-codes can be encoded with one or more bytes:
 	<td></td>
 	<td></td>
 	<td></td>
-	<td>&nbsp;2<sup>7</sup> = 128</td>
+	<td>&nbsp;2<sup>7&nbsp;</sup> = 128</td>
 </tr>
 <tr>
 	<td class='byte'>1xxxxxxx</td>
@@ -146,6 +146,9 @@ second half of its code space. This again reoccurs 128 times within for
 4-byte range and so forth. 
 The `ASCII` region though is an artefact of single byte characters and special 
 to the first comb. It does not reoccur in later combs.
+
+In addition no codes with a `1000 0000` byte are assigned. These are 
+reserved for an alternative fixed length encoding only used in memory.
 
 <!--
 TODO byte 1,2,3,4
