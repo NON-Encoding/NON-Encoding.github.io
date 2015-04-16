@@ -8,7 +8,8 @@ html {
 }
 body {
 	font-family: Lora, serif;
-	margin: 0;
+	margin: 0 auto;
+	width: 580px;
 	padding: 0 0 2em 0;
 	font-size: 16px;
 }
@@ -18,14 +19,11 @@ code, pre {
 
 page {
 	display: block;
-	padding-left: 4cm;
-	width: 640px;
-	padding-right: 2cm;
 }
 
 footer {
 	display: block;
-	text-align: right;
+	text-align: center;
 	font-size: 80%;
 	padding: 1em;
 	color: #666;
@@ -53,11 +51,6 @@ content p {
 	line-height: 1.4; 
 	clear: both;
 }
-content p strong {
-	font-family: Vidaloka; 
-	text-transform: lowercase;
-	font-weight: normal;
-}
 content pre {
 	border-radius: 2px;
 	padding: 10px;
@@ -74,15 +67,15 @@ content a[href^="#"] {
 	text-decoration: none;
 }
 
-content h1, content h2, content h3, content h4 {
+content h1, content h2, content h3, content h4, content h5 {
 	font-family: Vidaloka, serif; color: black;
 }
-content h1 { font-size: 2.4em; text-transform: uppercase; font-weight: normal; letter-spacing: -0.05em; font-family: Vidaloka, serif; word-spacing: 0.3em; }
-content h1 em { font-style: normal; font-size: 180%; font-weight: bold; text-transform: lowercase; color: black; letter-spacing: 3px; }
+content h1 { font-size: 2.25em; font-weight: bold; letter-spacing: -0.05em; font-family: Vidaloka, serif; word-spacing: 0.3em; }
+content h1 em { font-style: normal; font-size: 2.8em; text-transform: lowercase; color: black; letter-spacing: 3px; }
 content h2 { font-size: 1.75em; }
 content h3 { font-size: 1.5em; }
 content h4 { font-size: 1.25em; }
-content h5 { font-size: 1em; margin-bottom: 0; }
+content h5 { font-size: 1em; display: inline; margin-right: 0.5em; }
 content h2 { margin-top: 3em; }
 content h3 { margin-top: 2em; }
 

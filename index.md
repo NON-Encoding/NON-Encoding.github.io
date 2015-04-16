@@ -1,20 +1,20 @@
 ---
 layout: default
-title:  "NON-Encoding"
+title:  "non-encoding"
 ---
 
 # *N*ull *O*r *N*ext *E*ncoding
 
-**NONE** is a variable-length universal character encoding and code-page standard.
+**none** is a variable-length universal character encoding and code-page standard.
 
-It is the intent of the encoding to become the only text encoding needed and used;\\
+It is the intent of the encoding to become the only text encoding needed and used;
 to make both programming and working with texts less frustrating.
 
-Encoding finally has to become a **non-e**ncoding.
+Text encoding finally has to become a **none** issue.
 
 ## Encoding-Scheme
 
-**NONE** encoding is lightening simple and regular.
+**none** encoding is lightening simple and regular.
 
 1. Each character is identified by a single code, its character-code.
 2. Any character-code is encoded as a sequence of one or more bytes.
@@ -77,7 +77,7 @@ The qualities of this encoding scheme are:
 
 ## Code-Page
 
-**NONE** _encoding_ and _decoding_ from and to character-codes is as 
+**none** _encoding_ and _decoding_ from and to character-codes is as 
 straightforward as it can get. All character-codes are allocated on the 
 code page in such a way that the _encoded_ sequence of bits of a character's 
 bytes interpreted as one unsigned integer is the character code (code point).
@@ -157,24 +157,24 @@ With `ASCII` as basis any other character gets assigned to a code so that a
 handful of crucial properties emerge that make arithmetic of common text 
 processing tasks simpler and more efficient.
 
-Definiteness
-: There is one and only one sequence of bytes to represent a particular character. Characters do encode meaning, never presentation aspects.
-
-  > 1 character **=** 1 code **=** 1 sequence of bytes
+**Definiteness:** There is one and only one sequence of bytes to represent a 
+particular character. Characters do encode meaning, never presentation aspects:
+_1 character **=** 1 code **=** 1 sequence of bytes_.
  
-Analogousness
-: If two sequences of bytes are equal they always do represent the same sequence of characters.
+**Analogousness:** If two sequences of bytes are equal they always do represent 
+the same sequence of characters: 
+_bytes of a sequence of characters **=** sequence of bytes of those characters_.
 
-  > bytes of a sequence of characters **=** sequence of bytes of those characters
+**Reducibility:** Reduction to Roman/ASCII is done by dropping all but a 
+character's last byte. This implies that characters that are not based on Roman 
+letters or digits never have a final byte that would indicate such a relation.
 
-Reducibility
-: > reduction to Roman/ASCII is done by dropping all but a character's last byte.
+**Composability:** composition of letters and diacritics is done by adding 
+bytes or codes. It follows that characters that are not independent 
+(and as such also not members of a alphabet) do use the `NUL` final byte.
 
-Composability
-: > composition of letters and diacritics is done by adding bytes or codes
-
-Alphabetical Arrangement
-: > position and distance between letters or digits within the same alphabet is calculated by adding and subtracting their codes
+**Alphabetical Arrangement:** position and distance between letters or digits 
+within the same alphabet is calculated by adding and subtracting their codes.
 
 <!-- 
 ### Arithmetic's
@@ -187,6 +187,25 @@ Alphabetical Arrangement
 <tr><td>a</td><td>^</td><td>â</td></tr>
 </table>
 -->
+
+## Computations
+Given the encoding-scheme, the code-page arrangement and the properties of
+character assignment common text processing tasks have a low computational
+complexity and are straight forward to implement.
+
+Character...
+
+- **decoding:** _O(1)_ (copy to register)
+- **encoding:** _O(1)_ (drop leading zero bytes)
+- **normalisation:** _0_ (not needed)
+
+Character sequence (of length _n_; encoded as bytes)...
+
+- **length:** _O(n)_ (count bytes with MSB of zero)
+- **equals:** _O(n)_ (compare byte by byte or code by code for equality)
+- **m-th character:** _O(min(n,m))_ (count bytes with zero MSB)
+- **romanisation:** _O(n)_ (drop bytes with one MSB)
+- **deaccentuate:** _O(n)_ (drop bytes with one MSB before ASCII letter)
 
 ## Motivation
 
