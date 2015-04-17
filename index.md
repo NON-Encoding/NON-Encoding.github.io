@@ -3,14 +3,18 @@ layout: default
 title:  "non-encoding"
 ---
 
-# *N*ull *O*r *N*ext *E*ncoding
-
-**none** is a variable-length universal character encoding and code-page standard.
-
-It is the intent of the encoding to become the only text encoding needed and used;
-to make both programming and working with texts less frustrating.
-
-Text encoding finally has to become a **none** issue.
+<table id="title"><tr><td>
+<h1><em>N</em>ull<br/><em>O</em>r<br/><em>N</em>ext<br/><em>E</em>ncoding</h1>
+</td>
+<td width="40%" style="text-align: justify;">
+<b>none</b> is a universal variable-length character encoding <br/> 
+and code-page standard.<br/>
+<br/>
+The goal is that <b>none</b> becomes the only <b>text</b> encoding needed and used;<br/>
+to make both programming and working with texts less frustrating.<br/>
+<br/>
+Text encoding finally has to become a <b>none</b> question.
+</td></tr></table>
 
 ## Encoding-Scheme
 
@@ -22,7 +26,7 @@ Text encoding finally has to become a **none** issue.
 4. If the MSB of a byte is `0` it is the last byte of a character-code.
 5. The bits and bytes are in Big-Endian order.
 
-Thereby the different character-codes can be encoded with one or more bytes:
+The different character-codes can be encoded with one or more bytes:
 
 <table class='encoding'>
 <tr>
@@ -69,11 +73,11 @@ Thereby the different character-codes can be encoded with one or more bytes:
 The qualities of this encoding scheme are:
 
 * `ASCII` compatible (single byte with `0` MSB)
-* <code>2<sup>14</sup> = 16,384</code> possible 2-byte characters (that is 8 times more than `UTF-8`)
-* any sequence of bits and bytes has a meaning (except for last byte of an input)
+* <code>2<sup>14</sup> = 16,384</code> possible 2-byte characters (that is 8 times `UTF-8`)
+* any complete sequence of bytes represents some text
 * the schema naturally extends to any amount of bytes for a character
-* a start or end byte of a character can be identified simple and efficient 
-  within any stream of bytes without special knowledge (e.g. about the code-page).
+* start or end bytes of a character can be identified simple and efficient 
+  within streams of bytes without context knowledge
 
 ## Code-Page
 
@@ -84,7 +88,7 @@ bytes interpreted as one unsigned integer is the character code (code point).
 
 <table class='encoding'>
 <tr>
-	<th></th>
+	<th><i>Example:</i></th>
 	<th></th>
 	<th></th>
 	<th>Byte 1</th>
@@ -179,17 +183,6 @@ bytes or codes. It follows that characters that are not independent
 **Alphabetical Arrangement:** position and distance between letters or digits 
 within the same alphabet is calculated by adding and subtracting their codes.
 
-<!-- 
-### Arithmetic's
-
-<table class='big'>
-<tr><th></th><th>+</th><th>=</th></tr>
-<tr><td>e</td><td>´</td><td>é</td></tr>
-<tr><td>a</td><td>´</td><td>á</td></tr>
-<tr><td>e</td><td>^</td><td>ê</td></tr>
-<tr><td>a</td><td>^</td><td>â</td></tr>
-</table>
--->
 
 ## Computations
 Given the encoding-scheme, the code-page arrangement and the properties of
@@ -209,6 +202,11 @@ Character sequence (of length _n_; encoded as bytes)...
 - **m-th character:** _O(min(n,m))_ (count bytes with zero MSB)
 - **romanisation:** _O(n)_ (drop bytes with one MSB)
 - **deaccentuate:** _O(n)_ (drop bytes with one MSB before ASCII letter)
+
+<!-- 
+## Modes
+The encoding-scheme allows for the use of 
+-->
 
 ## Motivation
 

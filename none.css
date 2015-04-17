@@ -4,13 +4,11 @@
 @import url(http://fonts.googleapis.com/css?family=Vidaloka:400italic,400);
 
 html {
-/* background-color: #F5F1DC; */
+	padding: 0; margin: 0; 
 }
 body {
 	font-family: Lora, serif;
-	margin: 0 auto;
-	width: 580px;
-	padding: 0 0 2em 0;
+	padding: 0; margin: 0; 
 	font-size: 16px;
 }
 code, pre {
@@ -19,13 +17,16 @@ code, pre {
 
 page {
 	display: block;
+	width: 580px;
+	margin: 0 auto;
 }
 
 footer {
 	display: block;
 	text-align: center;
 	font-size: 80%;
-	padding: 1em;
+	padding: 2em;
+	margin-top: 2cm;
 	color: #666;
 }
 footer a {
@@ -67,21 +68,21 @@ content a[href^="#"] {
 	text-decoration: none;
 }
 
-content p strong {
-	font-family: sans-serif;
-}
-
-content h1, content h2, content h3, content h4, content h5 {
+h1, content h2, content h3, content h4, content h5 {
 	font-family: Vidaloka, serif; color: black;
 }
-content h1 { font-size: 2.25em; font-weight: bold; letter-spacing: -0.05em; font-family: Vidaloka, serif; word-spacing: 0.3em; }
-content h1 em { font-style: normal; font-size: 2.8em; text-transform: lowercase; color: black; letter-spacing: 3px; }
+h1 { font-size: 2.25em; font-weight: bold; letter-spacing: -0.05em; font-family: Vidaloka, serif; word-spacing: 0.3em; }
+h1 em { font-style: normal; font-size: 2.8em; text-transform: lowercase; letter-spacing: 3px; }
 content h2 { font-size: 1.75em; }
 content h3 { font-size: 1.5em; }
 content h4 { font-size: 1.25em; }
 content h5 { font-size: 1em; display: inline; margin-right: 0.5em; }
 content h2 { margin-top: 3em; }
 content h3 { margin-top: 2em; }
+
+#title { height: 100vh; padding: 0; position: relative; margin-bottom: 2cm; }
+h1 { text-align: left; line-height: 1.2em; padding: 0; margin: 0; }
+center { width: 3cm; text-align: justify; }
 
 table.encoding { font-family: "Source Code Pro"; empty-cells: hide; border-spacing: 1px 3px; border-collapse: separate; }
 table.encoding th {  }
@@ -98,7 +99,7 @@ div.page u, u.region { background-color: white; }
 div.page i, i.region { background: linear-gradient(-45deg, white 25%, black 25%, black 50%, white 50%, white 75%, black 75%); 
 		background-size: 4px 4px;
 }
-div.page i.ascii, i.region.ascii { color: white; font-weight: bold; }
+div.page i.ascii, i.region.ascii { color: white; background: none; background-color: black; }
 .page .byte1 {  }
 .region { display: inline-block; width: 15px; height: 15px; text-align: center; vertical-align: middle; line-height: 15px; font-size: 15px; font-family: "Source Code Pro"; font-style: normal; border: 1px solid black; }
 
