@@ -74,8 +74,9 @@ The qualities of this encoding scheme are:
 
 * `ASCII` compatible (single byte with `0` MSB)
 * <code>2<sup>14</sup> = 16,384</code> possible 2-byte characters (that is 8 times `UTF-8`)
-* any complete sequence of bytes represents some text
+* any complete sequence of bytes translates to valid codes
 * the schema naturally extends to any amount of bytes for a character
+* all non-logographic scripts could be encoded by a maximum of 2 bytes!
 * start or end bytes of a character can be identified simple and efficient 
   within streams of bytes without context knowledge
 
@@ -154,9 +155,6 @@ to the first comb. It does not reoccur in later combs.
 In addition no codes with a `1000 0000` byte are assigned. These are 
 reserved for an alternative fixed length encoding only used in memory.
 
-<!--
-TODO byte 1,2,3,4
--->
 
 ## Properties
 The assignment of characters to codes is withal not arbitrary. 
@@ -180,9 +178,14 @@ letters or digits never have a final byte that would indicate such a relation.
 bytes or codes. It follows that characters that are not independent 
 (and as such also not members of a alphabet) do use the `NUL` final byte.
 
+<!-- 
 **Alphabetical Arrangement:** position and distance between letters or digits 
 within the same alphabet is calculated by adding and subtracting their codes.
 
+Note: the alphabet is a feature of a language or writing system but encoding 
+is about scripts. The same letter can have different positions in different
+languages as the letter `ä` has in e.g. german and swedish.
+-->
 
 ## Computations
 Given the encoding-scheme, the code-page arrangement and the properties of
@@ -203,9 +206,41 @@ Character sequence (of length _n_; encoded as bytes)...
 - **romanisation:** _O(n)_ (drop bytes with one MSB)
 - **deaccentuate:** _O(n)_ (drop bytes with one MSB before ASCII letter)
 
-<!-- 
-## Modes
-The encoding-scheme allows for the use of 
+
+## Extensions
+Encoding is a balancing act between compact representation 
+(what benefits from a variable-length encoding) and computational efficiency 
+(what benefits from a fixed-length encoding).
+
+While the encoding-scheme is a variable-length encoding made for compact 
+representation it can be extended to different fixed length forms without 
+contradicting the properties or introduce multiple distinct encodings. 
+
+To extend the variable-length encoding to a fixed with of 2, 3 or 4 bytes per
+character the characters encoded with less than the chosen length are filled 
+will the reserved byte `1000 0000`. 
+
+		variable                                  0110 0000
+		fixed-2                        1000 0000  0110 0000
+		fixed-3             1000 0000  1000 0000  0110 0000
+		fixed-4  1000 0000  1000 0000  1000 0000  0110 0000
+		
+A fixed-length of less than 4 bytes means that characters encoded in 3 or 4 
+bytes cannot be represented. This is useful anyhow as most scripts are 
+represented in 1 or 2 bytes per character.
+
+As the byte `1000 0000` does never occur as part of the actual code-point value
+a extended form is easily recognisable and can be stripped away or added on the
+borders of a system or program or module therein. 
+
+<!--
+The internal code page could always mask away the 1 MSBs
+
+1000 0000  1000 0000  1000 0000  0110 0000
+0111 1111  0111 1111  0111 1111  1111 1111
+0000 0000  0000 0000  0000 0000  0110 0000
+
+this way it does not matter if the value (as 32-bit integer) was extended or not.
 -->
 
 ## Motivation
@@ -268,5 +303,27 @@ trapped in a dilemma to choose between efficient or correct.
 It's _text_, we all know how to handle that.
 
 
+## Contribution
+It requires great effort and knowledge about the worlds scripts to arrange the
+code-page in such a way that the properties described above arise. 
+The project requires the help of language experts to take this step. 
 
+From the numbers I know of it should be possible. 
+Roughly there are about 200 scripts worldwide.
+Most of them are not [logographic](http://en.wikipedia.org/wiki/Logogram).
+I made a rough estimate of about 40 characters per script on average:
+
+		200 x 40 = 8000
+
+That is roughly halve of the code-space available using 2 bytes, what is the
+goal for these scripts. Logographic scripts are encoded using 3 or 4 bytes. 
+There is plenty of space available - the main question here is: What is a good
+way to arrange them on the code-page so that typical text-processing tasks are
+simple to implement. 
+
+Maybe I missed something? Maybe you have ideas of more properties that are
+important or could be added?
+
+If you want to contribute in any way please [contact me](mailto:jaanbernitt+none@gmail.com)
+or use the [project's issue system](https://github.com/NON-Encoding/NON-Encoding.github.io/issues).
 

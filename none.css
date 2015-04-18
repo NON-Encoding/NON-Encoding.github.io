@@ -55,8 +55,6 @@ content p {
 content pre {
 	border-radius: 2px;
 	padding: 10px;
-	background-color: #eee8d5;
-	color: white;
 	tab-size: 4;
 	-moz-tab-size: 4;
 }
